@@ -1,16 +1,34 @@
-/* ==================================================
+/* =========================================================
    VER EXPEDIENTE
-================================================== */
+========================================================= */
 
-.ver-expediente-content {
-    max-width: 1100px;
-    margin: 0 auto;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f3f4f6;
+    color: #111827;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 
-/* ==================================================
-   HEADER
-================================================== */
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.ver-expediente-content {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
+
+/* =========================================================
+   HEADER EXPEDIENTE
+========================================================= */
 
 .expediente-header-card {
 
@@ -26,13 +44,16 @@
 
     padding: 22px;
 
-    border-radius: 16px;
-
     background: #ffffff;
 
     border: 1px solid #e5e7eb;
 
+    border-radius: 16px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, .04);
 }
+
 
 .expediente-header-main {
 
@@ -41,14 +62,14 @@
     align-items: center;
 
     gap: 15px;
-
 }
+
 
 .expediente-icon {
 
-    width: 50px;
+    width: 52px;
 
-    height: 50px;
+    height: 52px;
 
     display: flex;
 
@@ -56,17 +77,21 @@
 
     justify-content: center;
 
-    border-radius: 13px;
+    flex-shrink: 0;
+
+    border-radius: 14px;
 
     background: #111827;
 
-    color: #ffffff;
+    color: white;
 
     font-size: 24px;
-
 }
 
+
 .eyebrow {
+
+    display: block;
 
     color: #6b7280;
 
@@ -74,9 +99,9 @@
 
     font-weight: 800;
 
-    letter-spacing: .1em;
-
+    letter-spacing: .12em;
 }
+
 
 .expediente-header-card h1 {
 
@@ -86,7 +111,9 @@
 
     font-size: 26px;
 
+    line-height: 1.2;
 }
+
 
 .expediente-header-card p {
 
@@ -95,13 +122,12 @@
     color: #6b7280;
 
     font-size: 12px;
-
 }
 
 
-/* ==================================================
-   STATUS
-================================================== */
+/* =========================================================
+   ESTADO
+========================================================= */
 
 .status-badge {
 
@@ -111,17 +137,17 @@
 
     gap: 7px;
 
-    padding: 8px 12px;
+    padding: 8px 13px;
 
     border-radius: 999px;
 
-    font-size: 11px;
+    font-size: 10px;
 
     font-weight: 800;
 
     white-space: nowrap;
-
 }
+
 
 .status-dot {
 
@@ -132,53 +158,52 @@
     border-radius: 50%;
 
     background: currentColor;
-
 }
+
 
 .status-process {
 
     background: #eff6ff;
 
     color: #1d4ed8;
-
 }
+
 
 .status-success {
 
     background: #ecfdf5;
 
     color: #047857;
-
 }
+
 
 .status-warning {
 
     background: #fffbeb;
 
     color: #b45309;
-
 }
+
 
 .status-danger {
 
     background: #fef2f2;
 
     color: #b91c1c;
-
 }
+
 
 .status-neutral {
 
     background: #f3f4f6;
 
     color: #4b5563;
-
 }
 
 
-/* ==================================================
+/* =========================================================
    CARDS
-================================================== */
+========================================================= */
 
 .info-card {
 
@@ -186,13 +211,16 @@
 
     padding: 20px;
 
-    border-radius: 15px;
-
     background: #ffffff;
 
     border: 1px solid #e5e7eb;
 
+    border-radius: 15px;
+
+    box-shadow:
+        0 3px 12px rgba(0, 0, 0, .03);
 }
+
 
 .section-heading {
 
@@ -203,14 +231,14 @@
     gap: 11px;
 
     margin-bottom: 18px;
-
 }
+
 
 .section-heading-icon {
 
-    width: 34px;
+    width: 35px;
 
-    height: 34px;
+    height: 35px;
 
     display: flex;
 
@@ -218,13 +246,15 @@
 
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 9px;
 
     background: #f3f4f6;
 
     font-size: 16px;
-
 }
+
 
 .section-heading h2 {
 
@@ -233,8 +263,8 @@
     color: #111827;
 
     font-size: 16px;
-
 }
+
 
 .section-heading p {
 
@@ -243,13 +273,140 @@
     color: #9ca3af;
 
     font-size: 10px;
-
 }
 
 
-/* ==================================================
+/* =========================================================
+   DOS COLUMNAS
+========================================================= */
+
+.two-column-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+
+/* =========================================================
+   PERSONA
+========================================================= */
+
+.person-main {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+
+.person-avatar {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #111827;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 800;
+}
+
+
+.person-main strong {
+
+    display: block;
+
+    color: #111827;
+
+    font-size: 13px;
+}
+
+
+.person-main span {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: #9ca3af;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   DATOS
+========================================================= */
+
+.data-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.data-list > div {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding-bottom: 8px;
+
+    border-bottom:
+        1px solid #f3f4f6;
+}
+
+
+.data-list span {
+
+    color: #9ca3af;
+
+    font-size: 10px;
+}
+
+
+.data-list strong {
+
+    color: #374151;
+
+    font-size: 10px;
+
+    text-align: right;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
    ETAPA
-================================================== */
+========================================================= */
 
 .etapa-current {
 
@@ -263,13 +420,13 @@
 
     padding: 16px;
 
-    border-radius: 11px;
-
     background: #f9fafb;
 
     border: 1px solid #e5e7eb;
 
+    border-radius: 11px;
 }
+
 
 .etapa-current span,
 .etapa-order span {
@@ -283,67 +440,86 @@
     font-size: 9px;
 
     font-weight: 800;
-
-    letter-spacing: .06em;
-
 }
+
 
 .etapa-current strong {
 
     color: #111827;
 
-    font-size: 17px;
-
+    font-size: 16px;
 }
+
 
 .etapa-order {
 
     text-align: right;
-
 }
+
 
 .etapa-order strong {
 
     color: #111827;
 
     font-size: 18px;
-
 }
 
-.info-description {
 
-    margin-top: 12px;
+/* =========================================================
+   TRÁMITE
+========================================================= */
+
+.tramite-box {
+
+    padding: 16px;
+
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+}
+
+
+.tramite-box strong {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #111827;
+
+    font-size: 14px;
+}
+
+
+.tramite-box p {
+
+    margin: 0;
 
     color: #6b7280;
 
     font-size: 11px;
 
     line-height: 1.5;
-
 }
 
 
-/* ==================================================
-   DOS COLUMNAS
-================================================== */
+/* =========================================================
+   PARTICIPANTES
+========================================================= */
 
-.two-column-grid {
+.participants-list {
 
-    display: grid;
+    display: flex;
 
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+    flex-direction: column;
 
-    gap: 18px;
-
+    gap: 9px;
 }
 
 
-/* ==================================================
-   PERSONA
-================================================== */
-
-.person-main {
+.participant-card {
 
     display: flex;
 
@@ -351,17 +527,21 @@
 
     gap: 12px;
 
-    margin-bottom: 18px;
+    padding: 13px;
 
+    background: #f9fafb;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 11px;
 }
 
-.person-avatar {
 
-    width: 42px;
+.participant-avatar {
 
-    height: 42px;
+    width: 40px;
 
-    flex: 0 0 42px;
+    height: 40px;
 
     display: flex;
 
@@ -369,97 +549,108 @@
 
     justify-content: center;
 
+    flex-shrink: 0;
+
     border-radius: 50%;
 
     background: #111827;
 
     color: #ffffff;
 
-    font-size: 14px;
+    font-size: 13px;
 
     font-weight: 800;
-
 }
 
-.gestor-avatar {
 
-    font-size: 18px;
+.participant-info {
 
+    min-width: 0;
+
+    flex: 1;
 }
 
-.person-main strong {
+
+.participant-info strong {
 
     display: block;
 
     color: #111827;
 
-    font-size: 14px;
-
+    font-size: 12px;
 }
 
-.person-main span {
+
+.participant-info span {
 
     display: block;
 
     margin-top: 3px;
 
-    color: #9ca3af;
+    color: #2563eb;
 
     font-size: 10px;
 
+    font-weight: 700;
 }
 
 
-/* ==================================================
-   DATOS
-================================================== */
+.participant-info small {
 
-.data-list {
+    display: block;
 
-    display: flex;
+    margin-top: 4px;
 
-    flex-direction: column;
+    color: #6b7280;
 
-    gap: 9px;
-
+    font-size: 9px;
 }
 
-.data-list > div {
 
-    display: flex;
+/* =========================================================
+   BOTONES
+========================================================= */
 
-    align-items: center;
+.btn-primary,
+.btn-secondary {
 
-    justify-content: space-between;
+    min-height: 38px;
 
-    gap: 10px;
+    padding: 0 14px;
 
-    padding-bottom: 9px;
+    border-radius: 9px;
 
-    border-bottom:
-        1px solid #f3f4f6;
-
-}
-
-.data-list span {
-
-    color: #9ca3af;
+    font-family: inherit;
 
     font-size: 10px;
 
+    font-weight: 700;
+
+    cursor: pointer;
+
+    text-decoration: none;
 }
 
-.data-list strong {
+
+.btn-primary {
+
+    border: 0;
+
+    background: #111827;
+
+    color: #ffffff;
+}
+
+
+.btn-secondary {
+
+    border: 1px solid #d1d5db;
+
+    background: #ffffff;
 
     color: #374151;
-
-    font-size: 11px;
-
-    text-align: right;
-
-    word-break: break-word;
-
 }
+
 
 .card-action {
 
@@ -475,150 +666,446 @@
 
     background: #f9fafb;
 
-    color: #9ca3af;
+    color: #374151;
 
     font-size: 10px;
 
     font-weight: 700;
 
-    cursor: not-allowed;
+    cursor: pointer;
+}
+
+
+.participant-add-button {
+
+    background: #111827;
+
+    color: #ffffff;
+
+    border-color: #111827;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(17, 24, 39, .65);
+
+    backdrop-filter:
+        blur(4px);
+}
+
+
+.modal-overlay[hidden] {
+
+    display: none !important;
+}
+
+
+.persona-modal {
+
+    width: 100%;
+
+    max-width: 720px;
+
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, .30);
+
+    animation:
+        modalEntrada .18s ease-out;
+}
+
+
+@keyframes modalEntrada {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(12px)
+            scale(.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
 
 }
 
 
-/* ==================================================
-   GESTOR
-================================================== */
-
-.gestor-empty {
+.persona-modal-header {
 
     display: flex;
 
     align-items: flex-start;
 
-    gap: 9px;
+    justify-content: space-between;
 
-    padding: 12px;
+    gap: 15px;
 
-    border-radius: 9px;
+    padding: 22px;
 
-    background: #f9fafb;
-
+    border-bottom:
+        1px solid #e5e7eb;
 }
 
-.gestor-empty span {
 
-    font-size: 14px;
+.persona-modal-header > div > span {
 
+    color: #6b7280;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: .1em;
 }
 
-.gestor-empty p {
+
+.persona-modal-header h2 {
+
+    margin: 5px 0;
+
+    color: #111827;
+
+    font-size: 21px;
+}
+
+
+.persona-modal-header p {
 
     margin: 0;
 
     color: #6b7280;
 
-    font-size: 10px;
+    font-size: 11px;
 
-    line-height: 1.5;
-
+    line-height: 1.4;
 }
 
 
-/* ==================================================
-   TRÁMITE
-================================================== */
+.modal-close {
 
-.tramite-box {
+    width: 35px;
 
-    padding: 16px;
+    height: 35px;
 
-    border-radius: 10px;
+    flex-shrink: 0;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: #f3f4f6;
+
+    color: #374151;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+
+.persona-modal form {
+
+    padding: 22px;
+}
+
+
+/* =========================================================
+   FORMULARIOS
+========================================================= */
+
+.form-group {
+
+    margin-bottom: 16px;
+}
+
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #374151;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+
+    width: 100%;
+
+    min-height: 40px;
+
+    padding: 9px 11px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #111827;
+
+    font-family: inherit;
+
+    font-size: 11px;
+}
+
+
+.form-group textarea {
+
+    min-height: 85px;
+
+    resize: vertical;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+
+    border-color: #111827;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17, 24, 39, .08);
+}
+
+
+/* =========================================================
+   PERSONA SELECCIONADA
+========================================================= */
+
+.selected-client {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 16px;
+
+    padding: 12px;
 
     background: #f9fafb;
 
     border: 1px solid #e5e7eb;
 
-}
-
-.tramite-box strong {
-
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: #111827;
-
-    font-size: 14px;
-
-}
-
-.tramite-box p {
-
-    margin: 0;
-
-    color: #6b7280;
-
-    font-size: 11px;
-
-    line-height: 1.5;
-
-}
-
-
-/* ==================================================
-   INFORMACIÓN GENERAL
-================================================== */
-
-.data-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 10px;
-
-}
-
-.data-item {
-
-    padding: 13px;
-
     border-radius: 10px;
-
-    background: #f9fafb;
-
 }
 
-.data-item span {
+
+.selected-client span {
 
     display: block;
 
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 
     color: #9ca3af;
 
     font-size: 9px;
+}
+
+
+.selected-client strong {
+
+    color: #111827;
+
+    font-size: 11px;
+}
+
+
+.remove-client {
+
+    border: 0;
+
+    background: transparent;
+
+    color: #2563eb;
+
+    font-size: 10px;
 
     font-weight: 700;
 
+    cursor: pointer;
 }
 
-.data-item strong {
 
-    display: block;
+/* =========================================================
+   BÚSQUEDA
+========================================================= */
 
-    color: #374151;
+.participant-search-results {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    margin-top: 7px;
+}
+
+
+.participant-search-item {
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 3px;
+
+    padding: 11px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    text-align: left;
+
+    cursor: pointer;
+}
+
+
+.participant-search-item:hover {
+
+    background: #f9fafb;
+}
+
+
+.participant-search-item strong {
+
+    color: #111827;
+
+    font-size: 11px;
+}
+
+
+.participant-search-item span {
+
+    color: #9ca3af;
+
+    font-size: 9px;
+}
+
+
+.search-empty,
+.search-loading {
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    background: #f9fafb;
+
+    color: #6b7280;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.persona-error {
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background: #fef2f2;
+
+    color: #991b1b;
 
     font-size: 11px;
 
+    line-height: 1.4;
 }
 
 
-/* ==================================================
+/* =========================================================
+   ACCIONES MODAL
+========================================================= */
+
+.persona-modal-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 9px;
+
+    margin-top: 20px;
+
+    padding-top: 18px;
+
+    border-top:
+        1px solid #e5e7eb;
+}
+
+
+/* =========================================================
    OBSERVACIONES
-================================================== */
+========================================================= */
 
 .observaciones-box {
 
@@ -632,11 +1119,11 @@
 
     color: #78350f;
 
-    font-size: 12px;
+    font-size: 11px;
 
     line-height: 1.6;
-
 }
+
 
 .empty-box {
 
@@ -646,19 +1133,21 @@
 
     gap: 10px;
 
-    padding: 16px;
-
-    border-radius: 10px;
+    padding: 15px;
 
     border: 1px dashed #d1d5db;
 
+    border-radius: 10px;
+
+    background: #ffffff;
 }
+
 
 .empty-box span {
 
-    font-size: 18px;
-
+    font-size: 17px;
 }
+
 
 .empty-box p {
 
@@ -666,170 +1155,68 @@
 
     color: #9ca3af;
 
-    font-size: 11px;
-
+    font-size: 10px;
 }
 
 
-/* ==================================================
-   MÓDULOS
-================================================== */
+/* =========================================================
+   DATOS GENERALES
+========================================================= */
 
-.modules-grid {
+.data-grid {
 
     display: grid;
 
     grid-template-columns:
-        repeat(2, minmax(0, 1fr));
+        repeat(3, minmax(0, 1fr));
 
-    gap: 18px;
-
-    margin-bottom: 18px;
-
+    gap: 10px;
 }
 
-.module-card {
 
-    display: grid;
+.data-item {
 
-    grid-template-columns:
-        auto 1fr;
-
-    gap: 12px;
-
-    padding: 18px;
-
-    border-radius: 14px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5e7eb;
-
-}
-
-.module-icon {
-
-    width: 38px;
-
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
+    padding: 13px;
 
     border-radius: 10px;
 
-    background: #f3f4f6;
-
-    font-size: 18px;
-
+    background: #f9fafb;
 }
 
-.module-card h3 {
 
-    margin: 2px 0 5px;
+.data-item span {
 
-    color: #111827;
+    display: block;
 
-    font-size: 14px;
-
-}
-
-.module-card p {
-
-    margin: 0;
-
-    color: #6b7280;
-
-    font-size: 10px;
-
-    line-height: 1.5;
-
-}
-
-.module-card button {
-
-    grid-column: 1 / -1;
-
-    min-height: 34px;
-
-    border: 0;
-
-    border-radius: 8px;
-
-    background: #f3f4f6;
+    margin-bottom: 5px;
 
     color: #9ca3af;
 
-    font-size: 10px;
+    font-size: 9px;
 
     font-weight: 700;
-
-    cursor: not-allowed;
-
 }
 
 
-/* ==================================================
-   ACCIONES
-================================================== */
+.data-item strong {
 
-.bottom-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    gap: 9px;
-
-    padding-bottom: 30px;
-
-}
-
-.bottom-actions button {
-
-    font-family: inherit;
-
-}
-
-
-/* ==================================================
-   TOPBAR EXPEDIENTE
-================================================== */
-
-.topbar-expediente {
-
-    padding: 7px 10px;
-
-    border-radius: 8px;
-
-    background: #f3f4f6;
+    display: block;
 
     color: #374151;
 
     font-size: 10px;
-
-    font-weight: 800;
-
 }
 
 
-/* ==================================================
+/* =========================================================
    MÓVIL
-================================================== */
+========================================================= */
 
 @media (max-width: 760px) {
 
     .ver-expediente-content {
 
-        padding-top: 80px;
-
-        padding-bottom: 85px;
-
+        padding: 75px 12px 90px;
     }
 
 
@@ -839,42 +1226,25 @@
 
         flex-direction: column;
 
-        padding: 17px;
-
-    }
-
-
-    .expediente-header-card h1 {
-
-        font-size: 21px;
-
+        padding: 16px;
     }
 
 
     .expediente-header-main {
 
         width: 100%;
-
     }
 
 
-    .expediente-icon {
-
-        width: 43px;
-
-        height: 43px;
-
-        flex: 0 0 43px;
+    .expediente-header-card h1 {
 
         font-size: 20px;
-
     }
 
 
     .expediente-status {
 
         width: 100%;
-
     }
 
 
@@ -882,17 +1252,13 @@
 
         width: 100%;
 
-        box-sizing: border-box;
-
         justify-content: center;
-
     }
 
 
     .two-column-grid {
 
         grid-template-columns: 1fr;
-
     }
 
 
@@ -900,14 +1266,6 @@
 
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
-
-    }
-
-
-    .modules-grid {
-
-        grid-template-columns: 1fr;
-
     }
 
 
@@ -916,38 +1274,331 @@
         align-items: flex-start;
 
         flex-direction: column;
-
     }
 
 
     .etapa-order {
 
         text-align: left;
-
     }
 
 
-    .bottom-actions {
+    .persona-modal {
 
-        align-items: stretch;
+        max-width: none;
 
-        flex-direction: column;
+        max-height: 94vh;
 
+        border-radius:
+            18px 18px 0 0;
     }
 
 
-    .bottom-actions > * {
+    .modal-overlay {
+
+        align-items: flex-end;
+
+        padding: 0;
+    }
+
+
+    .persona-modal-header {
+
+        padding: 17px;
+    }
+
+
+    .persona-modal form {
+
+        padding: 17px;
+    }
+
+
+    .persona-modal-actions {
+
+        flex-direction: column-reverse;
+    }
+
+
+    .persona-modal-actions > * {
 
         width: 100%;
-
-        box-sizing: border-box;
-
     }
 
 
-    .topbar-expediente {
+    .selected-client {
 
-        display: none;
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .remove-client {
+
+        padding: 7px 0;
+    }
+
+}
+
+/* =========================================================
+   NUEVA PERSONA
+========================================================= */
+
+.create-person-button {
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 11px 13px;
+
+    border: 1px dashed #cbd5e1;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+
+    color: #475569;
+
+    font-family: inherit;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+}
+
+
+.create-person-button:hover {
+
+    background: #f1f5f9;
+
+}
+
+
+/* CONTENEDOR */
+
+.new-person-form {
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    background: #f8fafc;
+
+}
+
+
+/* CABECERA */
+
+.new-person-header {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 15px;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+}
+
+
+.new-person-header strong {
+
+    display: block;
+
+    color: #111827;
+
+    font-size: 12px;
+
+}
+
+
+.new-person-header span {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: #9ca3af;
+
+    font-size: 9px;
+
+    line-height: 1.4;
+
+}
+
+
+.new-person-close {
+
+    width: 29px;
+
+    height: 29px;
+
+    flex-shrink: 0;
+
+    border: 0;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+}
+
+
+/* GRID */
+
+.new-person-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 0 12px;
+
+}
+
+
+.new-person-full {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* BOTÓN */
+
+.new-person-save {
+
+    width: 100%;
+
+    margin-top: 5px;
+
+}
+
+
+/* ERROR */
+
+#nuevaPersonaError {
+
+    margin-bottom: 10px;
+
+}
+
+
+/* MÓVIL */
+
+@media (max-width: 600px) {
+
+    .new-person-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .new-person-full {
+
+        grid-column: auto;
+
+    }
+
+}
+
+/* =========================================================
+   ACCIONES PARTICIPANTES
+========================================================= */
+
+.participant-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.participant-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-left: auto;
+
+}
+
+
+.participant-action {
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+}
+
+
+.participant-action:hover {
+
+    background: #f3f4f6;
+
+}
+
+
+.participant-delete:hover {
+
+    background: #fef2f2;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .participant-action {
+
+        width: 30px;
+
+        height: 30px;
 
     }
 
