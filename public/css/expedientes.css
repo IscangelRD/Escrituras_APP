@@ -1,0 +1,759 @@
+/* =========================
+   EXPEDIENTES
+========================= */
+
+.expedientes-content {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+
+/* =========================
+   ENCABEZADO
+========================= */
+
+.page-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.page-heading > div > span {
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: .08em;
+
+    color: #6b7280;
+}
+
+.page-heading h1 {
+
+    margin: 6px 0 4px;
+
+    font-size: 27px;
+}
+
+.page-heading p {
+
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 13px;
+}
+
+
+.btn-primary {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 44px;
+
+    padding: 0 17px;
+
+    border-radius: 10px;
+
+    background: #111827;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+
+    background: #374151;
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+.search-card {
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    padding: 15px;
+
+    margin-bottom: 18px;
+}
+
+.search-form {
+
+    display: flex;
+
+    gap: 10px;
+}
+
+.search-input-wrapper {
+
+    position: relative;
+
+    flex: 1;
+}
+
+.search-input-wrapper input {
+
+    width: 100%;
+
+    height: 46px;
+
+    padding:
+        0 42px 0 43px;
+
+    border:
+        1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 14px;
+
+    background: #ffffff;
+}
+
+.search-input-wrapper input:focus {
+
+    border-color: #111827;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(17,24,39,.08);
+}
+
+.search-icon {
+
+    position: absolute;
+
+    left: 14px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    font-size: 17px;
+
+    pointer-events: none;
+}
+
+.clear-search {
+
+    position: absolute;
+
+    right: 13px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    color: #6b7280;
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+.btn-search {
+
+    min-width: 90px;
+
+    border: 0;
+
+    border-radius: 10px;
+
+    background: #111827;
+
+    color: #ffffff;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   TABLA
+========================= */
+
+.desktop-table-card {
+
+    background: #ffffff;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+}
+
+.table-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.expedientes-table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 1050px;
+}
+
+.expedientes-table th {
+
+    padding: 14px 16px;
+
+    background: #f9fafb;
+
+    color: #6b7280;
+
+    text-align: left;
+
+    font-size: 11px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .04em;
+
+    border-bottom:
+        1px solid #e5e7eb;
+}
+
+.expedientes-table td {
+
+    padding: 15px 16px;
+
+    border-bottom:
+        1px solid #f0f1f3;
+
+    font-size: 13px;
+
+    vertical-align: middle;
+}
+
+.expedientes-table tbody tr:hover {
+
+    background: #fafafa;
+}
+
+.expedientes-table td strong {
+
+    color: #111827;
+}
+
+
+/* =========================
+   BADGES
+========================= */
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    min-height: 27px;
+
+    padding:
+        0 9px;
+
+    border-radius: 999px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.badge-status {
+
+    background: #f3f4f6;
+
+    color: #374151;
+}
+
+.badge-stage {
+
+    background: #eef2ff;
+
+    color: #3730a3;
+}
+
+
+/* =========================
+   BOTÓN VER
+========================= */
+
+.btn-view {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 34px;
+
+    padding:
+        0 11px;
+
+    border-radius: 8px;
+
+    background: #f3f4f6;
+
+    color: #111827;
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.btn-view:hover {
+
+    background: #e5e7eb;
+}
+
+
+/* =========================
+   VACÍO
+========================= */
+
+.empty-cell {
+
+    height: 260px;
+
+    text-align: center;
+}
+
+.empty-state {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #6b7280;
+}
+
+.empty-state div {
+
+    font-size: 38px;
+
+    margin-bottom: 5px;
+}
+
+.empty-state strong {
+
+    color: #111827;
+
+    font-size: 15px;
+}
+
+.empty-state span {
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+.mobile-expedientes {
+
+    display: none;
+}
+
+
+/* =========================
+   PAGINACIÓN
+========================= */
+
+.pagination {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    margin-top: 20px;
+
+    margin-bottom: 10px;
+}
+
+.page-button {
+
+    width: 36px;
+
+    height: 36px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid #e5e7eb;
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    color: #374151;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.page-button:hover {
+
+    background: #f3f4f6;
+}
+
+.page-button.active {
+
+    background: #111827;
+
+    border-color: #111827;
+
+    color: #ffffff;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
+
+    .page-heading {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media (max-width: 760px) {
+
+    .expedientes-content {
+
+        padding-bottom: 20px;
+    }
+
+
+    .page-heading {
+
+        margin-bottom: 15px;
+    }
+
+    .page-heading h1 {
+
+        font-size: 23px;
+    }
+
+    .btn-primary {
+
+        width: 100%;
+    }
+
+
+    .search-card {
+
+        padding: 10px;
+    }
+
+    .search-form {
+
+        gap: 7px;
+    }
+
+    .btn-search {
+
+        min-width: 72px;
+
+        font-size: 12px;
+    }
+
+
+    /* Ocultamos tabla */
+
+    .desktop-table-card {
+
+        display: none;
+    }
+
+
+    /* Mostramos tarjetas */
+
+    .mobile-expedientes {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .expediente-card {
+
+        background: #ffffff;
+
+        border:
+            1px solid #e5e7eb;
+
+        border-radius: 14px;
+
+        padding: 16px;
+
+        box-shadow:
+            0 2px 7px
+            rgba(0,0,0,.03);
+    }
+
+
+    .expediente-card-top {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 10px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .expediente-card-top > strong {
+
+        font-size: 14px;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    .expediente-card-client {
+
+        font-size: 17px;
+
+        font-weight: 700;
+
+        margin-bottom: 14px;
+
+        color: #111827;
+    }
+
+
+    .expediente-card-info {
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        padding:
+            12px 0;
+
+        border-top:
+            1px solid #f0f1f3;
+
+        border-bottom:
+            1px solid #f0f1f3;
+    }
+
+
+    .expediente-card-info span {
+
+        display: block;
+
+        color: #9ca3af;
+
+        font-size: 10px;
+
+        text-transform: uppercase;
+
+        font-weight: 700;
+
+        margin-bottom: 3px;
+    }
+
+
+    .expediente-card-info strong {
+
+        display: block;
+
+        color: #374151;
+
+        font-size: 12px;
+    }
+
+
+    .expediente-card-footer {
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 10px;
+
+        margin-top: 13px;
+    }
+
+
+    .expediente-card-footer small {
+
+        color: #9ca3af;
+
+        font-size: 10px;
+    }
+
+
+    .expediente-card-footer .btn-view {
+
+        min-height: 35px;
+    }
+
+
+    .mobile-empty {
+
+        background: #ffffff;
+
+        border:
+            1px solid #e5e7eb;
+
+        border-radius: 14px;
+
+        padding: 45px 20px;
+
+        text-align: center;
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 8px;
+
+        color: #6b7280;
+    }
+
+
+    .mobile-empty div {
+
+        font-size: 38px;
+    }
+
+
+    .mobile-empty strong {
+
+        color: #111827;
+
+        font-size: 15px;
+    }
+
+
+    .mobile-empty span {
+
+        font-size: 12px;
+    }
+
+
+    .pagination {
+
+        margin-bottom: 10px;
+    }
+
+}
+
+
+/* =========================
+   MÓVILES MUY PEQUEÑOS
+========================= */
+
+@media (max-width: 380px) {
+
+    .expediente-card {
+
+        padding: 14px;
+    }
+
+    .expediente-card-client {
+
+        font-size: 15px;
+    }
+
+    .expediente-card-footer {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .expediente-card-footer .btn-view {
+
+        width: 100%;
+    }
+
+}
