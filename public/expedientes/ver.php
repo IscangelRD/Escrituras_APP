@@ -2097,6 +2097,299 @@ function fechaMostrar(
 
             </form>
 
+            <div
+                class="modal-overlay"
+                id="modalDatosPersona"
+                hidden>
+
+                <div class="persona-modal">
+
+                    <!-- ENCABEZADO -->
+
+                    <div class="persona-modal-header">
+
+                        <div>
+
+                            <span>
+                                PERSONA
+                            </span>
+
+                            <h2>
+                                Datos personales
+                            </h2>
+
+                            <p>
+                                Consulta y actualiza los datos de la persona.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="modal-close"
+                            id="cerrarModalDatosPersona">
+                            ✕
+                        </button>
+
+                    </div>
+
+
+                    <!-- FORMULARIO -->
+
+                    <form
+                        id="formDatosPersona">
+
+                        <input
+                            type="hidden"
+                            id="datosPersonaId">
+
+
+                        <!-- NOMBRE -->
+
+                        <div class="form-group">
+
+                            <label for="datosPersonaNombre">
+                                Nombre
+                            </label>
+
+                            <input
+                                type="text"
+                                id="datosPersonaNombre"
+                                maxlength="100"
+                                required>
+
+                        </div>
+
+
+                        <!-- APELLIDOS -->
+
+                        <div
+                            class="form-grid-2">
+
+                            <div class="form-group">
+
+                                <label for="datosPersonaApellidoPaterno">
+                                    Apellido paterno
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="datosPersonaApellidoPaterno"
+                                    maxlength="100"
+                                    required>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="datosPersonaApellidoMaterno">
+                                    Apellido materno
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="datosPersonaApellidoMaterno"
+                                    maxlength="100">
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FECHA Y EDAD -->
+
+                        <div
+                            class="form-grid-2">
+
+                            <div class="form-group">
+
+                                <label for="datosPersonaFechaNacimiento">
+                                    Fecha de nacimiento
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="datosPersonaFechaNacimiento">
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Edad
+                                </label>
+
+                                <div
+                                    class="edad-calculada"
+                                    id="datosPersonaEdad">
+                                    —
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ESTADO CIVIL -->
+
+                        <div class="form-group">
+
+                            <label for="datosPersonaEstadoCivil">
+                                Estado civil
+                            </label>
+
+                            <select
+                                id="datosPersonaEstadoCivil">
+
+                                <option value="">
+                                    Seleccionar estado civil...
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- CURP / RFC -->
+
+                        <div
+                            class="form-grid-2">
+
+                            <div class="form-group">
+
+                                <label for="datosPersonaCurp">
+                                    CURP
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="datosPersonaCurp"
+                                    maxlength="18"
+                                    autocomplete="off">
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="datosPersonaRfc">
+                                    RFC
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="datosPersonaRfc"
+                                    maxlength="13"
+                                    autocomplete="off">
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- TELÉFONO / CORREO -->
+
+                        <div
+                            class="form-grid-2">
+
+                            <div class="form-group">
+
+                                <label for="datosPersonaTelefono">
+                                    Teléfono
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="datosPersonaTelefono"
+                                    maxlength="20">
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="datosPersonaCorreo">
+                                    Correo electrónico
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="datosPersonaCorreo"
+                                    maxlength="150">
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DOMICILIO -->
+
+                        <div class="form-group">
+
+                            <label for="datosPersonaDomicilio">
+                                Domicilio
+                            </label>
+
+                            <textarea
+                                id="datosPersonaDomicilio"
+                                rows="3"></textarea>
+
+                        </div>
+
+
+                        <!-- OBSERVACIONES -->
+
+                        <div class="form-group">
+
+                            <label for="datosPersonaObservaciones">
+                                Observaciones
+                            </label>
+
+                            <textarea
+                                id="datosPersonaObservaciones"
+                                rows="3"></textarea>
+
+                        </div>
+
+
+                        <!-- ERROR -->
+
+                        <div
+                            id="datosPersonaError"
+                            class="persona-error"
+                            hidden></div>
+
+
+                        <!-- ACCIONES -->
+
+                        <div class="persona-modal-actions">
+
+                            <button
+                                type="button"
+                                class="btn-secondary"
+                                id="cancelarDatosPersona">
+                                Cancelar
+                            </button>
+
+
+                            <button
+                                type="submit"
+                                class="btn-primary"
+                                id="guardarDatosPersona">
+                                💾 Guardar cambios
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
         </div>
 
     </div>

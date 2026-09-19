@@ -1603,3 +1603,65 @@ body {
     }
 
 }
+
+/* =========================================================
+   FORMULARIO DATOS PERSONA
+========================================================= */
+
+.form-grid-2 {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+
+}
+
+
+.edad-calculada {
+
+    min-height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 14px;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 10px;
+
+    background: #f8fafc;
+
+    color: #334155;
+
+    font-weight: 600;
+
+}
+
+
+@media (max-width: 600px) {
+
+    .form-grid-2 {
+
+        grid-template-columns: 1fr;
+
+        gap: 0;
+
+    }
+
+
+    .persona-modal {
+
+        width: calc(100% - 20px);
+
+        max-height: 92vh;
+
+        overflow-y: auto;
+
+    }
+
+}
