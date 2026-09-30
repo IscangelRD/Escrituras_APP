@@ -1665,3 +1665,171 @@ body {
     }
 
 }
+
+/* =========================================================
+   HISTORIAL
+========================================================= */
+
+.historial-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+.historial-item {
+    display: flex;
+    gap: 14px;
+    position: relative;
+}
+
+
+.historial-marker {
+    width: 32px;
+    height: 32px;
+
+    flex: 0 0 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #eef2f7;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.historial-content {
+    flex: 1;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+
+.historial-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+}
+
+
+.historial-top strong {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+
+.historial-top time {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+
+.historial-description {
+    margin: 7px 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #374151;
+}
+
+
+.historial-user {
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    color: #6b7280;
+}
+
+
+.historial-cambio {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+
+.historial-cambio > div {
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+.historial-cambio span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+
+    color: #6b7280;
+}
+
+
+.historial-cambio strong {
+    display: block;
+
+    font-size: 12px;
+
+    word-break: break-word;
+}
+
+
+.historial-empty,
+.historial-loading {
+    padding: 30px 15px;
+
+    text-align: center;
+
+    color: #6b7280;
+}
+
+
+.historial-empty span,
+.historial-loading span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 25px;
+}
+
+
+@media (
+    max-width: 600px
+) {
+
+    .historial-top {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 4px;
+    }
+
+
+    .historial-cambio {
+        grid-template-columns: 1fr;
+    }
+
+}

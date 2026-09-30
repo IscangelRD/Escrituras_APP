@@ -5,6 +5,10 @@ declare(strict_types=1);
 require_once dirname(__DIR__, 2) . '/config/database.php';
 require_once dirname(__DIR__, 2) . '/app/Helpers/permisos.php';
 
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+
 header('Content-Type: application/json; charset=utf-8');
 
 try {
@@ -318,10 +322,28 @@ try {
     |--------------------------------------------------------------------------
     */
 
+    /*
+    |--------------------------------------------------------------------------
+    | Obtener datos actuales antes de modificar
+    |--------------------------------------------------------------------------
+    */
+
     $stmt =
         $pdo->prepare("
 
-            SELECT id
+            SELECT
+                id,
+                nombre,
+                apellido_paterno,
+                apellido_materno,
+                fecha_nacimiento,
+                estado_civil_id,
+                curp,
+                rfc,
+                telefono,
+                correo,
+                domicilio,
+                observaciones
 
             FROM personas
 
@@ -333,14 +355,14 @@ try {
 
         ");
 
-
     $stmt->execute([
-        ':id' =>
-            $id
+        ':id' => $id
     ]);
 
+    $personaAnterior =
+        $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$stmt->fetchColumn()) {
+    if (!$personaAnterior) {
 
         throw new RuntimeException(
             'La persona no existe o está inactiva.'
@@ -441,6 +463,15 @@ try {
         }
 
     }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Transacción
+    |--------------------------------------------------------------------------
+    */
+
+    $pdo->beginTransaction();
 
 
     /*
@@ -548,6 +579,261 @@ try {
 
     /*
     |--------------------------------------------------------------------------
+    | Registrar historial de cambios
+    |--------------------------------------------------------------------------
+    */
+
+    $camposHistorial = [
+
+        'nombre' => 'Nombre',
+        'apellido_paterno' => 'Apellido paterno',
+        'apellido_materno' => 'Apellido materno',
+        'fecha_nacimiento' => 'Fecha de nacimiento',
+        'estado_civil_id' => 'Estado civil',
+        'curp' => 'CURP',
+        'rfc' => 'RFC',
+        'telefono' => 'Teléfono',
+        'correo' => 'Correo electrónico',
+        'domicilio' => 'Domicilio',
+        'observaciones' => 'Observaciones'
+
+    ];
+
+    $valoresNuevos = [
+
+        'nombre' => $nombre,
+        'apellido_paterno' => $apellidoPaterno,
+        'apellido_materno' =>
+            $apellidoMaterno !== '' ? $apellidoMaterno : null,
+        'fecha_nacimiento' =>
+            $fechaNacimiento !== '' ? $fechaNacimiento : null,
+        'estado_civil_id' =>
+            $estadoCivilId ?: null,
+        'curp' =>
+            $curp !== '' ? $curp : null,
+        'rfc' =>
+            $rfc !== '' ? $rfc : null,
+        'telefono' =>
+            $telefono !== '' ? $telefono : null,
+        'correo' =>
+            $correo !== '' ? $correo : null,
+        'domicilio' =>
+            $domicilio !== '' ? $domicilio : null,
+        'observaciones' =>
+            $observaciones !== '' ? $observaciones : null
+
+    ];
+
+    $cambios = [];
+
+    foreach ($camposHistorial as $campo => $etiqueta) {
+
+        $anterior = $personaAnterior[$campo] ?? null;
+        $nuevo = $valoresNuevos[$campo] ?? null;
+
+        $anteriorComparacion =
+            $anterior === null ? null : (string) $anterior;
+
+        $nuevoComparacion =
+            $nuevo === null ? null : (string) $nuevo;
+
+        if ($anteriorComparacion !== $nuevoComparacion) {
+
+            $cambios[] = [
+                'campo' => $campo,
+                'etiqueta' => $etiqueta,
+                'anterior' => $anterior,
+                'nuevo' => $nuevo
+            ];
+
+        }
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Expediente relacionado
+    |--------------------------------------------------------------------------
+    |
+    | El modal de persona trabaja con persona_id y no necesita
+    | expediente_id. Si existe una participación activa, tomamos
+    | el expediente más reciente para relacionar el historial.
+    |
+    */
+
+    $expedienteIdHistorial = null;
+
+    $stmtExpediente =
+        $pdo->prepare("
+
+            SELECT expediente_id
+
+            FROM expediente_personas
+
+            WHERE
+                persona_id = :persona_id
+                AND activo = 1
+
+            ORDER BY id DESC
+
+            LIMIT 1
+
+        ");
+
+    $stmtExpediente->execute([
+        ':persona_id' => $id
+    ]);
+
+    $expedienteIdHistorial =
+        $stmtExpediente->fetchColumn();
+
+    if ($expedienteIdHistorial !== false) {
+        $expedienteIdHistorial =
+            (int) $expedienteIdHistorial;
+    } else {
+        $expedienteIdHistorial = null;
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Usuario que realizó el cambio
+    |--------------------------------------------------------------------------
+    */
+
+    $usuarioIdHistorial = null;
+
+    foreach ([
+        'usuario_id',
+        'user_id',
+        'id_usuario',
+        'id'
+    ] as $claveSesion) {
+
+        if (
+            isset($_SESSION[$claveSesion])
+            && is_numeric($_SESSION[$claveSesion])
+            && (int) $_SESSION[$claveSesion] > 0
+        ) {
+
+            $usuarioIdHistorial =
+                (int) $_SESSION[$claveSesion];
+
+            break;
+
+        }
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Datos técnicos
+    |--------------------------------------------------------------------------
+    */
+
+    $ip =
+        $_SERVER['REMOTE_ADDR'] ?? null;
+
+    $userAgent =
+        $_SERVER['HTTP_USER_AGENT'] ?? null;
+
+
+    if ($cambios) {
+
+        $stmtHistorial =
+            $pdo->prepare("
+
+                INSERT INTO historial (
+
+                    usuario_id,
+                    expediente_id,
+                    entidad,
+                    entidad_id,
+                    accion,
+                    descripcion,
+                    campo,
+                    valor_anterior,
+                    valor_nuevo,
+                    ip,
+                    user_agent
+
+                ) VALUES (
+
+                    :usuario_id,
+                    :expediente_id,
+                    'personas',
+                    :entidad_id,
+                    'ACTUALIZAR',
+                    :descripcion,
+                    :campo,
+                    :valor_anterior,
+                    :valor_nuevo,
+                    :ip,
+                    :user_agent
+
+                )
+
+            ");
+
+        foreach ($cambios as $cambio) {
+
+            $descripcion =
+                'Actualización de datos personales: '
+                . $cambio['etiqueta'];
+
+            $stmtHistorial->execute([
+
+                ':usuario_id' =>
+                    $usuarioIdHistorial,
+
+                ':expediente_id' =>
+                    $expedienteIdHistorial,
+
+                ':entidad_id' =>
+                    $id,
+
+                ':descripcion' =>
+                    $descripcion,
+
+                ':campo' =>
+                    $cambio['campo'],
+
+                ':valor_anterior' =>
+                    $cambio['anterior'] === null
+                        ? null
+                        : (string) $cambio['anterior'],
+
+                ':valor_nuevo' =>
+                    $cambio['nuevo'] === null
+                        ? null
+                        : (string) $cambio['nuevo'],
+
+                ':ip' =>
+                    $ip,
+
+                ':user_agent' =>
+                    $userAgent
+
+            ]);
+
+        }
+
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Confirmar transacción
+    |--------------------------------------------------------------------------
+    */
+
+    $pdo->commit();
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Obtener persona actualizada
     |--------------------------------------------------------------------------
     */
@@ -639,6 +925,14 @@ try {
 
 
 } catch (Throwable $e) {
+
+    if (
+        isset($pdo)
+        && $pdo instanceof PDO
+        && $pdo->inTransaction()
+    ) {
+        $pdo->rollBack();
+    }
 
     http_response_code(400);
 

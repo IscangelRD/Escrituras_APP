@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rol.options[
                 rol.selectedIndex
             ]?.textContent
-            ?.toLowerCase()
+                ?.toLowerCase()
             || '';
 
         const requiereRepresentado =
@@ -588,8 +588,8 @@ document.addEventListener('DOMContentLoaded', () => {
             resultados.innerHTML = `
                 <div class="search-empty">
                     ${escapeHtml(
-                        error.message
-                    )}
+                error.message
+            )}
                 </div>
             `;
 
@@ -641,8 +641,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     : ''
 
             ]
-            .filter(Boolean)
-            .join(' · ');
+                .filter(Boolean)
+                .join(' · ');
 
         item.appendChild(
             nombre
@@ -1301,7 +1301,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     btnDatosPersona.addEventListener(
                         'click',
-                        function(event) {
+                        function (event) {
 
                             event.preventDefault();
 
@@ -1425,8 +1425,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span>⚠️</span>
                     <p>
                         ${escapeHtml(
-                            error.message
-                        )}
+                error.message
+            )}
                     </p>
                 </div>
             `;
@@ -1633,7 +1633,7 @@ document.addEventListener('DOMContentLoaded', () => {
             editarRol.options[
                 editarRol.selectedIndex
             ]?.textContent
-            ?.toLowerCase()
+                ?.toLowerCase()
             || '';
 
         const requiereRepresentado =
@@ -1744,7 +1744,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 editarRol.options[
                     editarRol.selectedIndex
                 ]?.textContent
-                ?.toLowerCase()
+                    ?.toLowerCase()
                 || '';
 
             const requiereRepresentado =
@@ -1971,8 +1971,8 @@ document.addEventListener('DOMContentLoaded', () => {
             resultadosEditar.innerHTML = `
                 <div class="search-empty">
                     ${escapeHtml(
-                        error.message
-                    )}
+                error.message
+            )}
                 </div>
             `;
 
@@ -2718,6 +2718,317 @@ document.addEventListener('DOMContentLoaded', () => {
             cerrarModalDatosPersona
         );
 
+    /* =========================================================
+GUARDAR DATOS PERSONALES
+========================================================= */
+
+    document
+        .getElementById(
+            'formDatosPersona'
+        )
+        ?.addEventListener(
+            'submit',
+            async function (event) {
+
+                event.preventDefault();
+
+
+                const formulario =
+                    this;
+
+
+                const boton =
+                    document.getElementById(
+                        'guardarDatosPersona'
+                    );
+
+
+                const error =
+                    document.getElementById(
+                        'datosPersonaError'
+                    );
+
+
+                if (error) {
+
+                    error.hidden =
+                        true;
+
+                    error.textContent =
+                        '';
+
+                }
+
+
+                const id =
+                    document.getElementById(
+                        'datosPersonaId'
+                    )?.value;
+
+
+                if (!id) {
+
+                    if (error) {
+
+                        error.hidden =
+                            false;
+
+                        error.textContent =
+                            'No se encontró el ID de la persona.';
+
+                    }
+
+                    return;
+
+                }
+
+
+                /*
+                |--------------------------------------------------------------------------
+                | Deshabilitar botón
+                |--------------------------------------------------------------------------
+                */
+
+                if (boton) {
+
+                    boton.disabled =
+                        true;
+
+                    boton.textContent =
+                        '💾 Guardando...';
+
+                }
+
+
+                try {
+
+                    const formData =
+                        new FormData();
+
+
+                    formData.append(
+                        'id',
+                        id
+                    );
+
+
+                    formData.append(
+                        'nombre',
+                        document.getElementById(
+                            'datosPersonaNombre'
+                        )?.value.trim()
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'apellido_paterno',
+                        document.getElementById(
+                            'datosPersonaApellidoPaterno'
+                        )?.value.trim()
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'apellido_materno',
+                        document.getElementById(
+                            'datosPersonaApellidoMaterno'
+                        )?.value.trim()
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'fecha_nacimiento',
+                        document.getElementById(
+                            'datosPersonaFechaNacimiento'
+                        )?.value
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'estado_civil_id',
+                        document.getElementById(
+                            'datosPersonaEstadoCivil'
+                        )?.value
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'curp',
+                        (
+                            document.getElementById(
+                                'datosPersonaCurp'
+                            )?.value
+                            || ''
+                        ).trim().toUpperCase()
+                    );
+
+
+                    formData.append(
+                        'rfc',
+                        (
+                            document.getElementById(
+                                'datosPersonaRfc'
+                            )?.value
+                            || ''
+                        ).trim().toUpperCase()
+                    );
+
+
+                    formData.append(
+                        'telefono',
+                        document.getElementById(
+                            'datosPersonaTelefono'
+                        )?.value.trim()
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'correo',
+                        document.getElementById(
+                            'datosPersonaCorreo'
+                        )?.value.trim()
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'domicilio',
+                        document.getElementById(
+                            'datosPersonaDomicilio'
+                        )?.value.trim()
+                        || ''
+                    );
+
+
+                    formData.append(
+                        'observaciones',
+                        document.getElementById(
+                            'datosPersonaObservaciones'
+                        )?.value.trim()
+                        || ''
+                    );
+
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | ENVIAR
+                    |--------------------------------------------------------------------------
+                    */
+
+                    const response =
+                        await fetch(
+                            'editar_persona.php',
+                            {
+                                method: 'POST',
+                                body: formData
+                            }
+                        );
+
+
+                    const texto =
+                        await response.text();
+
+
+                    console.log(
+                        'Respuesta editar persona:',
+                        texto
+                    );
+
+
+                    let data;
+
+
+                    try {
+
+                        data =
+                            JSON.parse(
+                                texto
+                            );
+
+                    } catch (e) {
+
+                        throw new Error(
+                            'El servidor no devolvió JSON válido.'
+                        );
+
+                    }
+
+
+                    if (!data.success) {
+
+                        throw new Error(
+                            data.message
+                            ||
+                            'No fue posible guardar los cambios.'
+                        );
+
+                    }
+
+
+                    /*
+                    |--------------------------------------------------------------------------
+                    | ACTUALIZACIÓN EXITOSA
+                    |--------------------------------------------------------------------------
+                    */
+
+                    cerrarModalDatosPersona();
+
+
+                    /*
+                    | Recargar participantes para
+                    | mostrar el nombre actualizado.
+                    */
+                    window.location.reload();
+
+
+                } catch (error) {
+
+                    console.error(
+                        'Error al guardar persona:',
+                        error
+                    );
+
+                    const errorPersona =
+                        document.getElementById(
+                            'datosPersonaError'
+                        );
+
+                    if (errorPersona) {
+
+                        errorPersona.hidden =
+                            false;
+
+                        errorPersona.textContent =
+                            error.message;
+
+                    }
+
+
+
+
+                } finally {
+
+                    if (boton) {
+
+                        boton.disabled =
+                            false;
+
+                        boton.textContent =
+                            '💾 Guardar cambios';
+
+                    }
+
+                }
+
+            }
+        );
+
 
     /* =========================================================
        FUNCIONES AUXILIARES
@@ -2743,6 +3054,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function mostrarErrorNuevaPersona(
         mensaje
     ) {
+        id = "modalDatosPersona"
 
         if (!nuevaPersonaError) {
             return;

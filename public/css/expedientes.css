@@ -757,3 +757,228 @@
     }
 
 }
+
+/* =========================================================
+   ACCIONES DEL EXPEDIENTE
+========================================================= */
+
+.expediente-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+    padding-top: 16px;
+
+    border-top: 1px solid #e5e7eb;
+
+}
+
+
+/* =========================================================
+   BOTÓN BASE
+========================================================= */
+
+.action-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    min-height: 42px;
+
+    padding: 0 16px;
+
+    border-radius: 10px;
+
+    border: 1px solid transparent;
+
+    text-decoration: none;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+
+    box-sizing: border-box;
+
+}
+
+
+.action-btn:hover {
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 4px 12px
+        rgba(0,0,0,.10);
+
+}
+
+
+.action-btn:active {
+
+    transform: translateY(0);
+
+}
+
+
+/* =========================================================
+   ICONO
+========================================================= */
+
+.action-icon {
+
+    font-size: 15px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================================
+   HISTORIAL
+========================================================= */
+
+.action-btn-history {
+
+    background: #eef2ff;
+
+    border-color: #c7d2fe;
+
+    color: #3730a3;
+
+}
+
+
+.action-btn-history:hover {
+
+    background: #e0e7ff;
+
+}
+
+
+/* =========================================================
+   VOLVER
+========================================================= */
+
+.action-btn-secondary {
+
+    background: #ffffff;
+
+    border-color: #d1d5db;
+
+    color: #374151;
+
+}
+
+
+.action-btn-secondary:hover {
+
+    background: #f9fafb;
+
+}
+
+
+/* =========================================================
+   EDITAR
+========================================================= */
+
+.action-btn-edit {
+
+    background: #ffffff;
+
+    border-color: #d1d5db;
+
+    color: #374151;
+
+}
+
+
+.action-btn-edit:hover {
+
+    background: #f3f4f6;
+
+}
+
+
+/* =========================================================
+   CAMBIAR ETAPA
+========================================================= */
+
+.action-btn-primary {
+
+    background: #111827;
+
+    border-color: #111827;
+
+    color: #ffffff;
+
+}
+
+
+.action-btn-primary:hover {
+
+    background: #1f2937;
+
+}
+
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .expediente-actions {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 8px;
+
+    }
+
+
+    .action-btn {
+
+        width: 100%;
+
+        min-height: 44px;
+
+        padding: 0 10px;
+
+        font-size: 12px;
+
+    }
+
+
+    .action-btn-history {
+
+        grid-column: 1 / -1;
+
+    }
+
+}
